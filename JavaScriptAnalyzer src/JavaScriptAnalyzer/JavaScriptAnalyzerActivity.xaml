@@ -1,0 +1,27 @@
+﻿<Activity mc:Ignorable="sap" x:Class="JavaScriptAnalyzer.JavaScriptAnalyzerActivity" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:ar="clr-namespace:Antlr.Runtime;assembly=Antlr3.Runtime" xmlns:ard="clr-namespace:Antlr.Runtime.Debug;assembly=Antlr3.Runtime" xmlns:arm="clr-namespace:Antlr.Runtime.Misc;assembly=Antlr3.Runtime" xmlns:art="clr-namespace:Antlr.Runtime.Tree;assembly=Antlr3.Runtime" xmlns:j="clr-namespace:JavaScriptTranslatorActivities;assembly=ParserActivity" xmlns:j1="clr-namespace:JavaScriptTranslatorActivities;assembly=JavaScriptTranslatorActivities" xmlns:ja="clr-namespace:JavascriptParser.Activities;assembly=ParserActivity" xmlns:ja1="clr-namespace:JavaScriptAnalyzer.Activities;assembly=ParserActivity" xmlns:local="clr-namespace:JavaScriptAnalyzer" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mv="clr-namespace:Microsoft.VisualBasic;assembly=System" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="clr-namespace:ParserActivity;assembly=ParserActivity" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:s1="clr-namespace:System;assembly=System" xmlns:s2="clr-namespace:System;assembly=System.Xml" xmlns:s3="clr-namespace:System;assembly=System.Core" xmlns:s4="clr-namespace:System;assembly=System.ServiceModel" xmlns:sa="clr-namespace:System.Activities;assembly=System.Activities" xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System" xmlns:scg1="clr-namespace:System.Collections.Generic;assembly=System.ServiceModel" xmlns:scg2="clr-namespace:System.Collections.Generic;assembly=System.Core" xmlns:scg3="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:sl="clr-namespace:System.Linq;assembly=System.Core" xmlns:st="clr-namespace:System.Text;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="SourceCode" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap:VirtualizedContainerService.HintSize>262,434</sap:VirtualizedContainerService.HintSize>
+  <mva:VisualBasic.Settings>Assembly references and imported namespaces for internal implementation</mva:VisualBasic.Settings>
+  <Sequence sad:XamlDebuggerXmlReader.FileName="C:\Users\jaanusj\Desktop\15.04\JavaScriptAnalyzer\JavascriptAnalyzer\JavaScriptAnalyzerActivity.xaml" sap:VirtualizedContainerService.HintSize="222,394">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="art:CommonTree" Default="[Nothing]" Name="JavaScriptAst" />
+      <Variable x:TypeArguments="x:String" Name="XmlString">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String" Value="" />
+        </Variable.Default>
+      </Variable>
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg3:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <j1:JavaScriptParserActivity Ast="[JavaScriptAst]" sap:VirtualizedContainerService.HintSize="200,22" InputString="[SourceCode]" />
+    <j1:AstPrinterActivity Ast="[JavaScriptAst]" sap:VirtualizedContainerService.HintSize="200,22" />
+    <j1:XmlTranslatorActivity Ast="[JavaScriptAst]" sap:VirtualizedContainerService.HintSize="200,22" OutputFileName="outputXml.xml" Xml="[XmlString]" />
+    <local:XmlAnalyzerActivity sap:VirtualizedContainerService.HintSize="200,22" InputXmlName="outputXml.xml" OutputXmlName="results.xml" />
+    <local:ReportGeneratorActivity AnalysisResultsXmlName="results.xml" sap:VirtualizedContainerService.HintSize="200,22" ReportHtmlName="report.html" />
+  </Sequence>
+</Activity>
